@@ -37,7 +37,7 @@ use Doctrine\DBAL\Types\BlobType;
  * @author Benjamin Eberlei <kontakt@beberlei.de>
  * @todo   Rename: PostgreSQLPlatform
  */
-class PostgreSqlPlatform extends AbstractPlatform
+class CRDBALPlatform extends AbstractPlatform
 {
     /**
      * @var bool
@@ -1037,7 +1037,7 @@ class PostgreSqlPlatform extends AbstractPlatform
      */
     public function getName()
     {
-        return 'postgresql';
+        return 'crdbal';
     }
 
     /**
@@ -1165,7 +1165,7 @@ class PostgreSqlPlatform extends AbstractPlatform
      */
     protected function getReservedKeywordsClass()
     {
-        return 'Doctrine\DBAL\Platforms\Keywords\PostgreSQLKeywords';
+        return 'Doctrine\DBAL\Platforms\Keywords\CRDBALKeywords';
     }
 
     /**

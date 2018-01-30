@@ -30,7 +30,7 @@ use Doctrine\DBAL\Types\Type;
  * @author Benjamin Eberlei <kontakt@beberlei.de>
  * @since  2.0
  */
-class PostgreSqlSchemaManager extends AbstractSchemaManager
+class CRDBALSchemaManager extends AbstractSchemaManager
 {
     /**
      * @var array

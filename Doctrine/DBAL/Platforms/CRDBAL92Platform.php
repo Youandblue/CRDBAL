@@ -26,7 +26,7 @@ namespace Doctrine\DBAL\Platforms;
  * @link   www.doctrine-project.org
  * @since  2.5
  */
-class PostgreSQL92Platform extends PostgreSQL91Platform
+class CRDBAL92Platform extends CRDBAL91Platform
 {
     /**
      * {@inheritdoc}
@@ -61,7 +61,7 @@ class PostgreSQL92Platform extends PostgreSQL91Platform
      */
     protected function getReservedKeywordsClass()
     {
-        return 'Doctrine\DBAL\Platforms\Keywords\PostgreSQL92Keywords';
+        return 'Doctrine\DBAL\Platforms\Keywords\CRDBAL92Keywords';
     }
 
     /**

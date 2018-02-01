@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 $cwd = getcwd();
-$dest = '/home/build_ctl/www/vendor/doctrine/dbal/lib';
+$dest = '/home/build_crdbal/www/vendor/doctrine/dbal/lib';
 
 $links = explode("\n", `find Doctrine/ -type f`);
 
@@ -9,5 +9,6 @@ foreach($links as $lv){
 	if(strpos($lv, '/')===FALSE) continue;
 	 $newdir = $dest.'/'.substr($lv, 0, strrpos($lv, '/') );
 	`mkdir -p {$newdir}`;
+	`rm -rf {$dest}/{$lv}`;
 	`ln -s {$cwd}/{$lv} {$dest}/{$lv}`;
 }

@@ -258,7 +258,7 @@ class CRDBALPlatform extends AbstractPlatform
      */
     public function getListTablesSQL()
     {
-        return "SELECT quote_ident(table_name) AS table_name,
+        return "SELECT table_name AS table_name,
                        table_schema AS schema_name
                 FROM   information_schema.tables
                 WHERE  table_schema NOT LIKE 'pg_%'
@@ -273,11 +273,11 @@ class CRDBALPlatform extends AbstractPlatform
      */
     public function getListViewsSQL($database)
     {
-        return 'SELECT quote_ident(table_name) AS viewname,
+        return "SELECT table_name AS viewname,
                        table_schema AS schemaname,
                        view_definition AS definition
                 FROM   information_schema.views
-                WHERE  view_definition IS NOT NULL';
+                WHERE  view_definition IS NOT NULL";
     }
 
     /**
@@ -285,7 +285,7 @@ class CRDBALPlatform extends AbstractPlatform
      */
     public function getListTableForeignKeysSQL($table, $database = null)
     {
-        return "SELECT quote_ident(r.conname) as conname, pg_catalog.pg_get_constraintdef(r.oid, true) as condef
+        return "SELECT r.conname as conname, pg_catalog.pg_get_constraintdef(r.oid, true) as condef
                   FROM pg_catalog.pg_constraint r
                   WHERE r.conrelid =
                   (
@@ -321,7 +321,7 @@ class CRDBALPlatform extends AbstractPlatform
         $table = $this->quoteStringLiteral($table->getName());
 
         return "SELECT
-                    quote_ident(relname) as relname
+                    relname as relname
                 FROM
                     pg_class
                 WHERE oid IN (
@@ -341,7 +341,7 @@ class CRDBALPlatform extends AbstractPlatform
      */
     public function getListTableIndexesSQL($table, $currentDatabase = null)
     {
-        return "SELECT quote_ident(relname) as relname, pg_index.indisunique, pg_index.indisprimary,
+        return "SELECT relname as relname, pg_index.indisunique, pg_index.indisprimary,
                        pg_index.indkey, pg_index.indrelid,
                        pg_get_expr(indpred, indrelid) AS where
                  FROM pg_class, pg_index
@@ -383,7 +383,7 @@ class CRDBALPlatform extends AbstractPlatform
     {
         return "SELECT
                     a.attnum,
-                    quote_ident(a.attname) AS field,
+                    a.attname AS field,
                     t.typname AS type,
                     format_type(a.atttypid, a.atttypmod) AS complete_type,
                     (SELECT t1.typname FROM pg_catalog.pg_type t1 WHERE t1.oid = t.typbasetype) AS domain_type,

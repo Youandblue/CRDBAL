@@ -17,9 +17,9 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\DBAL\Driver\PDOPgSql;
+namespace Doctrine\DBAL\Driver\CRDBAL;
 
-use Doctrine\DBAL\Driver\AbstractPostgreSQLDriver;
+use Doctrine\DBAL\Driver\AbstractCRDBALDriver;
 use Doctrine\DBAL\Driver\PDOConnection;
 use Doctrine\DBAL\DBALException;
 use PDOException;
@@ -30,7 +30,7 @@ use PDO;
  *
  * @since 2.0
  */
-class Driver extends AbstractPostgreSQLDriver
+class Driver extends AbstractCRDBALDriver
 {
     /**
      * {@inheritdoc}
@@ -107,6 +107,6 @@ class Driver extends AbstractPostgreSQLDriver
      */
     public function getName()
     {
-        return 'pdo_pgsql';
+        return 'crdbal';
     }
 }

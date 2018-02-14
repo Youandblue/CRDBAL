@@ -22,10 +22,10 @@ namespace Doctrine\DBAL\Driver;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver;
 use Doctrine\DBAL\Exception;
-use Doctrine\DBAL\Platforms\PostgreSQL91Platform;
-use Doctrine\DBAL\Platforms\PostgreSQL92Platform;
-use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
-use Doctrine\DBAL\Schema\PostgreSqlSchemaManager;
+use Doctrine\DBAL\Platforms\CRDBAL91Platform;
+use Doctrine\DBAL\Platforms\CRDBAL92Platform;
+use Doctrine\DBAL\Platforms\CRDBALPlatform;
+use Doctrine\DBAL\Schema\CRDBALSchemaManager;
 use Doctrine\DBAL\VersionAwarePlatformDriver;
 
 /**
@@ -35,7 +35,7 @@ use Doctrine\DBAL\VersionAwarePlatformDriver;
  * @link   www.doctrine-project.org
  * @since  2.5
  */
-abstract class AbstractPostgreSQLDriver implements Driver, ExceptionConverterDriver, VersionAwarePlatformDriver
+abstract class AbstractCRDBALDriver implements Driver, ExceptionConverterDriver, VersionAwarePlatformDriver
 {
     /**
      * {@inheritdoc}
@@ -110,11 +110,11 @@ abstract class AbstractPostgreSQLDriver implements Driver, ExceptionConverterDri
 
         switch(true) {
             case version_compare($version, '9.2', '>='):
-                return new PostgreSQL92Platform();
+                return new CRDBAL92Platform();
             case version_compare($version, '9.1', '>='):
-                return new PostgreSQL91Platform();
+                return new CRDBAL91Platform();
             default:
-                return new PostgreSqlPlatform();
+                return new CRDBALPlatform();
         }
     }
 
@@ -135,7 +135,7 @@ abstract class AbstractPostgreSQLDriver implements Driver, ExceptionConverterDri
      */
     public function getDatabasePlatform()
     {
-        return new PostgreSqlPlatform();
+        return new CRDBALPlatform();
     }
 
     /**
@@ -143,6 +143,6 @@ abstract class AbstractPostgreSQLDriver implements Driver, ExceptionConverterDri
      */
     public function getSchemaManager(\Doctrine\DBAL\Connection $conn)
     {
-        return new PostgreSqlSchemaManager($conn);
+        return new CRDBALSchemaManager($conn);
     }
 }

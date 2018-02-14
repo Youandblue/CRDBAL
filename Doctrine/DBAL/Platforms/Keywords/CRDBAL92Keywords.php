@@ -26,14 +26,14 @@ namespace Doctrine\DBAL\Platforms\Keywords;
  * @link   www.doctrine-project.org
  * @since  2.5
  */
-class PostgreSQL92Keywords extends PostgreSQL91Keywords
+class CRDBAL92Keywords extends CRDBAL91Keywords
 {
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'PostgreSQL92';
+        return 'CRDBAL92';
     }
 
     /**

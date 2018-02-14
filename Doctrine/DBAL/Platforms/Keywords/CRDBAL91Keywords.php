@@ -20,25 +20,27 @@
 namespace Doctrine\DBAL\Platforms\Keywords;
 
 /**
- * PostgreSQL Keywordlist.
+ * PostgreSQL 9.1 reserved keywords list.
  *
+ * @author Martin Hasoň <martin.hason@gmail.com>
+ * @author Steve Müller <st.mueller@dzh-online.de>
  * @link   www.doctrine-project.org
- * @since  2.0
- * @author Benjamin Eberlei <kontakt@beberlei.de>
- * @author Marcelo Santos Araujo <msaraujo@php.net>
+ * @since  2.5
  */
-class PostgreSQLKeywords extends KeywordList
+class CRDBAL91Keywords extends CRDBALKeywords
 {
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'PostgreSQL';
+        return 'CRDBAL91';
     }
 
     /**
      * {@inheritdoc}
+     *
+     * @link http://www.postgresql.org/docs/9.1/static/sql-keywords-appendix.html
      */
     protected function getKeywords()
     {
@@ -48,10 +50,11 @@ class PostgreSQLKeywords extends KeywordList
             'ANALYZE',
             'AND',
             'ANY',
+            'ARRAY',
             'AS',
             'ASC',
+            'ASYMMETRIC',
             'AUTHORIZATION',
-            'BETWEEN',
             'BINARY',
             'BOTH',
             'CASE',
@@ -59,9 +62,14 @@ class PostgreSQLKeywords extends KeywordList
             'CHECK',
             'COLLATE',
             'COLUMN',
+            'CONCURRENTLY',
             'CONSTRAINT',
             'CREATE',
+            'CROSS',
+            'CURRENT_CATALOG',
             'CURRENT_DATE',
+            'CURRENT_ROLE',
+            'CURRENT_SCHEMA',
             'CURRENT_TIME',
             'CURRENT_TIMESTAMP',
             'CURRENT_USER',
@@ -74,6 +82,7 @@ class PostgreSQLKeywords extends KeywordList
             'END',
             'EXCEPT',
             'FALSE',
+            'FETCH',
             'FOR',
             'FOREIGN',
             'FREEZE',
@@ -98,26 +107,27 @@ class PostgreSQLKeywords extends KeywordList
             'LOCALTIME',
             'LOCALTIMESTAMP',
             'NATURAL',
-            'NEW',
             'NOT',
             'NOTNULL',
             'NULL',
-            'OFF',
             'OFFSET',
-            'OLD',
             'ON',
             'ONLY',
             'OR',
             'ORDER',
             'OUTER',
+            'OVER',
             'OVERLAPS',
             'PLACING',
             'PRIMARY',
             'REFERENCES',
+            'RETURNING',
+            'RIGHT',
             'SELECT',
             'SESSION_USER',
             'SIMILAR',
             'SOME',
+            'SYMMETRIC',
             'TABLE',
             'THEN',
             'TO',
@@ -127,9 +137,12 @@ class PostgreSQLKeywords extends KeywordList
             'UNIQUE',
             'USER',
             'USING',
+            'VARIADIC',
             'VERBOSE',
             'WHEN',
-            'WHERE'
+            'WHERE',
+            'WINDOW',
+            'WITH',
         );
     }
 }
